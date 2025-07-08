@@ -22,12 +22,11 @@ def generate_federated_simulation_data(
     - num_clients (int): Number of source clients to simulate.
     - output_dir (str): Base directory where client data folders will be stored.
     - scale (bool): Whether to standardize features.
-    - domain_split_strategy (str): "equal" or "custom". Currently only "equal" is implemented.
     - target_domains (list, optional): List of domains to group together as the target client.
 
     Returns:
     - target_grouping (pd.Series or None): The domain assignment of each row if domain_column is provided.
-    - target_groups (np.ndarray or None): Unique domain values if domain_column is provided.
+    - target_groups (np.ndarray or None): Unique domain values.
     """
     os.makedirs(output_dir, exist_ok=True)
 
@@ -72,7 +71,7 @@ def generate_federated_simulation_data(
 
         print(f"Client {i}: {len(x_client)} samples")
 
-        client_dir = os.path.join(output_dir, f"client_{i}")
+        client_dir = os.path.join(output_dir, f"{i}")
         os.makedirs(client_dir, exist_ok=True)
         np.savetxt(os.path.join(client_dir, "x_train.txt"), x_client, fmt='%.6f')
         np.savetxt(os.path.join(client_dir, "y_train.txt"), y_client, fmt='%.6f')
