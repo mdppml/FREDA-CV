@@ -6,6 +6,8 @@ This repository contains the source code of our research article:
 
 [FREDA-CV](https://github.com/mdppml/FREDA_CV) is a simplified and task-agnostic implementation of our federated domain adaptation framework originally introduced in the [FREDA](https://github.com/mdppml/FREDA) repository.
 
+The original `FREDA` implementation relies on **domain similarity information**, which may not always be available in real-world scenarios. `FREDA-CV` replaces this with a **cross-validation-based strategy** to tune the Lambda parameter, improving **usability and reproducibility** across datasets without requiring prior knowledge about inter-domain relationships.
+
 ---
 
 ### Usage
