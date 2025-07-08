@@ -38,7 +38,6 @@ class SourceClient:
         self.local_kernel = None
 
         self.local_WEN_model = None
-        self.local_masked_WEN_model = None
 
         self.seed = seed
         np.random.seed(seed)
