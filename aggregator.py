@@ -51,10 +51,7 @@ class Aggregator:
 
         for i in range(no_features):
             for client in self.source_clients:
-                client.compute_masked_hyperparameters(
-                    feature=i,
-                    peer_ids=range(self.no_clients)
-                )
+                client.compute_masked_hyperparameters(feature=i)
 
             ks, ns = zip(*(client.get_masked_hyperparameters() for client in self.source_clients))
             kernel_sig.append(sum(ks) / self.no_clients)
@@ -293,8 +290,7 @@ class Aggregator:
         """
 
         if self.confidences is None:
-            print("Cannot perform training without confidences")
-            return
+            raise ValueError("Cannot perform training without confidences.")
 
         no_features = self.target_client.get_no_features()
 
